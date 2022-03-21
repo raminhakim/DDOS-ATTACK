@@ -231,8 +231,7 @@ def romz_xyz(cookie,venom={}):
 # MENU MASUK
 def Masuk():
 	try:
-		kueh = romz_xyz(open("data/cookies","r").read().strip())
-	except FileNotFoundError:
+
 		os.system('clear')
 		banner()
 		print ('\n%s%s%s 01 %sLOGIN INSTA BY USER OR PASS (CRACK INSTA) '%(U,til,K,O))
@@ -289,20 +288,14 @@ class masuk:
 		
 	def login(self):
 		try:
-			cek = requests.get(f"{self.url}/profile.php?v=info", cookies=romz_xyz(self.cok)).text
-			if "mbasic_logout_button" in cek:
-				from data import login, informasi
-				open("data/cookies","w").write(self.cok)
 				if "Laporkan Masalah" in cek:
 					mikey = login.bot(romz_xyz(self.cok),self.url)
-					informasi.info(romz_xyz(self.cok),cek).myinfo()
 					mikey.usernem()
 					print ("\n%s √ SUCCESSFUL LOGIN "%(H));jeda(2)
 					selecetan().menu()
 				else:
 					mikey = login.bot(romz_xyz(self.cok),self.url)
 					mikey.lang(romz_xyz(self.cok))
-					informasi.info(romz_xyz(self.cok),cek).myinfo()
 					print ("\n%s √ SUCCESSFUL LOGIN "%(H));jeda(2)
 					selecetan().menu()
 			elif 'checkpoint' in cek:
@@ -362,25 +355,14 @@ class Menu():
 		
 	def tentang(self):
 		try:
-			kueh = romz_xyz(open("data/cookies","r").read().strip())
-		except IOError:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
 			print ("%s%s COOKIES INVAILD "%(M,til));jeda(2)
-			os.system('python bff-2.py')
-		try:
-			tentang = json.loads(open("data/my_info","r").read().strip())
-		except FileNotFoundError:
-			from data import informasi
-			informasi.info(kueh, requests.get("https://mbasic.facebook.com/profile.php?v=info",cookies = kueh).text).myinfo()
-			os.system('python bff-2.py')
+			os.system('python ddos.py')
 		try:
 			a = requests.get(f"{self.url}/profile.php", cookies = kueh).text
 		except requests.exceptions.ConnectionError:
 			exit('\n\n%s%s tidak ada koneksi%s\n'%(M,til,N))
-		if "mbasic_logout_button" not in a:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
 			print ("%s%s COOKIES INVAILD "%(M,til));jeda(2)
-			os.system('python bff-2.py')
+			os.system('python ddos.py')
 		else:
 			banner()
 			print(f"{U} # {O}Name{M} : {H}{tentang.get('NAME')}\n")
@@ -403,14 +385,12 @@ class Menu():
 class selecetan:
 	
 	def __init__(self):
-		self.kueh = romz_xyz(open("data/cookies","r").read().strip())
 		try:
 			self.token = open("data/token.txt","r").read()
 		except FileNotFoundError:
-			os.system("rm -rf data/cookies && rm -rf data/token && rm -rf data/my_info")
 			os.system('clear')
 			print ("%s%s COOKIES INVAILD "%(M,til));jeda(2)
-			os.system('python bff-2.py')
+			os.system('python ddos.py')
 		self.url = ("https://mbasic.facebook.com")
 		self.id = []
 				
@@ -616,20 +596,7 @@ class selecetan:
 			ingfoh()
 		elif slut in['RM','Rm','rm']:
 			print ('\n%s%s menghapus data login dari termux '%(M,til));jeda(1)
-			try:
-				os.remove("data/cookies")
-				os.remove("data/token.txt")
-				os.remove("data/my_info")
-			except:
-				os.system("rm -rf data/cookie && rm -rf data/token && rm -rf data/my_info")
-			jalan('\n%s√ berhasil terhapus '%(H))
-			exit()
-		elif slut in['0','00']:
-			exit ('\n')
-		
-		if len(self.id)!=0:
-			print
-			return Crack().romiy(self.id)
+			
 		#else:
 			#exit (f'{M}{til} gagal mengambil ID ')
 			
